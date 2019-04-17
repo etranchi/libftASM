@@ -3,13 +3,14 @@
 # define __LIBFTS__
 
 
-int ft_isdigit(int c);
-int ft_tolower(int c);
-int ft_toupper(int c);
-int ft_isalpha(int c);
-int ft_isalnum(int c);
-int ft_isascii(int c);
-int ft_isprint(int c);
-
+int ft_isdigit(int );
+int ft_isalpha(int );
+int ft_isalnum(int );
+int ft_isascii(int );
+int ft_isprint(int );
+int ft_tolower(int );
+int ft_toupper(int );
+int ft_strlen(char* );
+void ft_bzero(void *, size_t);
 
 #endif 

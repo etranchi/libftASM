@@ -17,6 +17,7 @@ S_FILES =	ft_isdigit.s\
 			ft_isalnum.s\
 			ft_isascii.s\
 			ft_isprint.s\
+			ft_strlen.s\
 		  
 
 all: $(NAME)

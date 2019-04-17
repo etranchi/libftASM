@@ -2,9 +2,9 @@ section .text
     global _ft_isprint
 
 _ft_isprint:
-    cmp rdi, 40
+    cmp rdi, 32
     jl not_good
-    cmp rdi, 177
+    cmp rdi, 127
     jl good
     jmp not_good
 

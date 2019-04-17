@@ -4,7 +4,7 @@ section .text
 _ft_isascii:
     cmp rdi, 0
     jl not_good
-    cmp rdi, 256
+    cmp rdi, 128
     jl good
     jmp not_good
 

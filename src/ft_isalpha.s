@@ -6,6 +6,8 @@ _ft_isalpha:
     jl not_good
     cmp rdi, 91
     jl good
+    cmp rdi, 97
+    jl not_good
     cmp rdi, 123
     jl good
     jmp not_good
