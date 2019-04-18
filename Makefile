@@ -18,6 +18,8 @@ S_FILES =	ft_isdigit.s\
 			ft_isascii.s\
 			ft_isprint.s\
 			ft_strlen.s\
+			ft_bzero.s\
+			ft_strcat.s\
 		  
 
 all: $(NAME)
