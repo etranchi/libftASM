@@ -79,24 +79,31 @@ int main(int argc, char **argv)
     else
         printf("Success.\n");
 
-    if (argc >= 3) {
-        ret = ft_strlen(argv[2]);
-        ret2= strlen(argv[2]);
-	    printf("STRLEN -> real: %zu, mine: %zu\n",ret2, ret);
-        ft_bzero(argv[2], strlen(argv[2]));
-        printf("BZERO: %s\n", argv[2]);
-    }
+    // if (argc >= 3) {
+    //     ret = ft_strlen(argv[2]);
+    //     ret2= strlen(argv[2]);
+	//     printf("STRLEN -> real: %zu, mine: %zu\n",ret2, ret);
+    //     ft_bzero(argv[2], strlen(argv[2]));
+    //     printf("BZERO: %s\n", argv[2]);
+    // }
     char *str;
+    char *str2;
 
-    if (argc == 4)
+    if (argc >= 4)
 	{
 		i = atoi(argv[1]);
 		str = (char *)malloc(sizeof(char) * 100);
 		str[0] = 0;
+        str2 = (char *)malloc(sizeof(char) * 100);
+		str2[0] = 0;
 
+    str2 = strcat(str2, argv[2]);
+        str2 = strcat(str2, argv[3]);
         str = ft_strcat(str, argv[2]);
         str = ft_strcat(str, argv[3]);
-        printf("la %s\n", str);
+        
+        printf("la  %s\n", str);
+        printf("la2 %s\n", str2);
 	}
 
     return 0;

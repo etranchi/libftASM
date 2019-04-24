@@ -2,23 +2,30 @@ section .text
     global _ft_strcat
 
 _ft_strcat:
-    mov rcx, 0
-    jmp check
+    xor rcx, rcx
+    mov r8, rdi
+    cmp [rsi], byte 0
+    je end
+    jmp get_size
+    jmp end
 
-check:
-    cmp [rsi + (rcx * 4)], byte 0
+get_size:
+    cmp byte [rdi], 0
     je copy
     inc rcx
-    jmp check
+    inc rdi
+    jmp get_size
 
 copy:
-    cmp [rdi], byte 0
+    cmp byte [rsi], 0
     je end
-    mov [rsi + (rcx * 4)] , byte rdi
-    add rdi, 1
-    inc rcx
+    mov rax, [rsi] ; rax registre gen, rsi reg adressage
+    mov [rdi], rax
+    inc rdi
+    inc rsi
     jmp copy
 
 end:
-    mov rax, r15
-	ret
+    mov byte [rdi], 0
+    mov rax, r8
+    ret

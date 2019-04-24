@@ -6,7 +6,7 @@ _ft_bzero:
 
 loop:
 	cmp rcx, rsi
-	je end
+	je end	
 	cmp [rdi], byte 0
 	je end
 	mov [rdi], byte 0
