@@ -26,6 +26,5 @@ copy:
     jmp copy
 
 end:
-    mov byte [rdi], 0
     mov rax, r8
     ret

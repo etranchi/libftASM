@@ -1,110 +1,241 @@
-#include "include/libfts.h"
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv) 
+void ft_putstr(char *c);
+int ft_isalpha(char c);
+int ft_toupper(int c);
+int ft_tolower(int c);
+int ft_isdigit(int c);
+int ft_isascii(int c);
+int ft_isalnum(int c);
+int ft_isprint(int c);
+void ft_bzero(char *str, size_t n);
+char *ft_strcat(char *s1, char *s2);
+int ft_strlen(char *s1);
+void *ft_memcpy(char *s1, char *s2, size_t n);
+char *ft_strdup(char *s1);
+void *ft_memset(void *b, int c, size_t len);
+int  ft_icmp(int a, int b);
+void  ft_putchar(char c);
+void  ft_putchar_fd(char c, int fd);
+int ft_isupper(char c);
+int ft_islower(char c);
+
+
+void	test_isalpha()
 {
-    // printf("Real isdigit: %d\n",isdigit(42));
-    // printf("Mine isdigit: %d\n",ft_isdigit(42));
-    // int i = -9;
-    // while (i< 0) {
-    //     printf("%c", tolower(i));
-    //     i++;
-    // }
-    // printf("\n");
-    // i = -9;
-    // while (i < 0){ 
-    //     printf("%c", ft_tolower(i));
-    //     i++;
-    // }
-    // printf("\n");
-    
-    // printf("Real toupper: %c\n", toupper('b'));
-    // printf("Mine toupper: %c\n", ft_toupper('b'));
-    // printf("Real isalpha: %d\n", isalpha(''));
-    // printf("Mine isalpha: %d\n", ft_isalpha(''));
-    // printf("Real isalnum: %d\n", isalnum('9'));
-    // printf("Mine isalnum: %d\n", ft_isalnum('9'));
-    // printf("Real isascii: %d\n", isascii(0));
-    // printf("Real isascii: %d\n", ft_isascii(0));
-    // printf("Real isprint: %d\n", isprint(0));
-    // printf("Real isprint: %d\n", ft_isprint(0));
-	int			i;
-	int			j;
-	int			ret;
-    int			ret2;
-    int error = 0;
-	if (argc == 2)
+	int i = -1;
+	int err = 0;
+
+	while (++i < 128)
 	{
-		i = atoi(argv[1]);
-		j = -9;
-		while (j < 255)
+		if (ft_isalpha(i) != isalpha(i))
 		{
-			if (i == 0) {
-				ret = ft_isalpha(j);
-                ret2 = isalpha(j);
-            }
-			else if (i == 1) { 
-				ret = ft_isdigit(j);
-                ret2 = isdigit(j);
-            }
-			else if (i == 2) {
-				ret = ft_isalnum(j);
-                ret2 = isalnum(j);
-            }
-			else if (i == 3) {
-                ret = ft_isascii(j);
-                ret2 = isascii(j);
-            }
-			else if (i == 4) {
-				ret = ft_isprint(j);
-                ret2 = isprint(j);
-            }
-			else if (i == 5) {
-				ret = ft_tolower(j);
-                ret2 = tolower(j);
-            } 
-			else if (i == 6) { 
-				ret = ft_toupper(j);
-                ret2 = toupper(j);
-            }
-            if (ret != ret2) {
-                error = 1;
-                printf("value :%d, real: %d, mine: %d\n", j,ret2, ret);
-            }
-			j++;
+			printf("\033[31merror on ft_isalpha at char -> %c\033[0m\n", i);
+			err = 1;
 		}
 	}
-    if (error)
-        printf("Error.\n");
-    else
-        printf("Success.\n");
+	if (!err)
+		printf("\033[92m ft_isalpha is ok \033[0m\n");
+}
 
-    // if (argc >= 3) {
-    //     ret = ft_strlen(argv[2]);
-    //     ret2= strlen(argv[2]);
-	//     printf("STRLEN -> real: %zu, mine: %zu\n",ret2, ret);
-    //     ft_bzero(argv[2], strlen(argv[2]));
-    //     printf("BZERO: %s\n", argv[2]);
-    // }
-    char *str;
-    char *str2;
+void	test_toupper()
+{
+	int i = -1;
+	int err = 0;
 
-    if (argc >= 4)
+	while (++i < 128)
 	{
-		i = atoi(argv[1]);
-		str = (char *)malloc(sizeof(char) * 100);
-		str[0] = 0;
-        str2 = (char *)malloc(sizeof(char) * 100);
-		str2[0] = 0;
+		if (ft_toupper(i) != toupper(i))
+		{
+			printf("\033[31merror on ft_toupper at char -> %c\033[0m\n", i);
+			err = 1;
+		}
+	}
+	if (!err)
+		printf("\033[92m ft_toupper is ok \033[0m\n");
+}
 
-    str2 = strcat(str2, argv[2]);
-        str2 = strcat(str2, argv[3]);
-        str = ft_strcat(str, argv[2]);
-        str = ft_strcat(str, argv[3]);
-        
-        printf("la  %s\n", str);
-        printf("la2 %s\n", str2);
+void	test_tolower()
+{
+	int i = -1;
+	int err = 0;
+
+	while (++i < 128)
+	{
+		if (ft_tolower(i) != tolower(i))
+		{
+			printf("\033[31merror on ft_tolower at char -> %c\033[0m\n", i);
+			err = 1;
+		}
+	}
+	if (!err)
+		printf("\033[92m ft_tolower is ok \033[0m\n");
+}
+
+void	test_isdigit()
+{
+	int i = -1;
+	int err = 0;
+
+	while (++i < 128)
+	{
+		if (ft_isdigit(i) != isdigit(i))
+		{
+			printf("\033[31merror on ft_isdigit at char -> %c\033[0m\n", i);
+			err = 1;
+		}
+	}
+	if (!err)
+		printf("\033[92m ft_isdigit is ok \033[0m\n");
+}
+
+void	test_isascii()
+{
+	int i = -1;
+	int err = 0;
+
+	while (++i < 128)
+	{
+		if (ft_isascii(i) != isascii(i))
+		{
+			printf("\033[31merror on ft_isascii at char -> %c\033[0m\n", i);
+			err = 1;
+		}
+	}
+	if (!err)
+		printf("\033[92m ft_isascii is ok \033[0m\n");
+}
+
+void	test_isalnum()
+{
+	int i = -1;
+	int err = 0;
+
+	while (++i < 128)
+	{
+		if (ft_isalnum(i) != isalnum(i))
+		{
+			printf("\033[31merror on ft_isalnum at char -> %c\033[0m\n", i);
+			err = 1;
+		}
+	}
+	if (!err)
+		printf("\033[92m ft_isalnum is ok \033[0m\n");
+}
+
+void	test_isprint()
+{
+	int i = -1;
+	int err = 0;
+
+	while (++i < 128)
+	{
+		if (ft_isprint(i) != isprint(i))
+		{
+			printf("\033[31merror on ft_isprint at char -> %c\033[0m\n", i);
+			err = 1;
+		}
+	}
+	if (!err)
+		printf("\033[92m ft_isprint is ok \033[0m\n");
+}
+
+void test_memcpy (void)
+{
+	char	memc1[10]	= "123456789";
+	char	memc2[5]	= "abcd";
+
+	ft_memcpy(memc1, memc2, 3);
+	if (memc1[0] == memc2[0] && memc1[1] == memc2[1] && memc1[2] == memc2[2])
+		printf("\033[92m ft_memcpy is ok \033[0m\n");
+	else
+		printf("\033[31merror on ft_memcpy\033[0m\n");
+}
+
+void test_ft_bzero(void)
+{
+	char *str = strdup("totowefewefwe");
+	char *str2 = strdup("totowefewefwe");
+	int len = strlen("totowefewefwe");
+	int i = -1;;
+	int err = 0;
+
+	bzero(str , 3);
+	ft_bzero(str2 , 3);
+	while (++i < len)
+	{
+		if (str[i] != str2[i])
+		{
+			printf("\033[31merror on ft_bzero at i -> %d char->  %c\033[0m\n", i, str[i]);
+			err = 1;
+		}
 	}
 
-    return 0;
+	if (!err)
+		printf("\033[92m ft_bzero is ok \033[0m\n");
+
+}
+
+void	test_ft_memset(void)
+{
+	char *str = strdup("totowefewefwe");
+	char *str2 = strdup("totowefewefwe");
+	int len = strlen("totowefewefwe");
+
+	memset(str, 'c', 4);
+	ft_memset(str2, 'c', 4);
+
+	if (strcmp(str, str2) != 0)
+		printf("\033[31merror on ft_memset at str -> %s str2->  %s\033[0m\n",str, str2);
+	else
+		printf("\033[92m ft_memset is ok \033[0m\n");
+}
+
+
+void	test_ft_strlen(void)
+{
+	int a = strlen("42");
+	int b = ft_strlen("42");
+	if (a != b)
+		printf("\033[31merror on ft_strlen\n");
+	else
+		printf("\033[92m ft_strlen is ok \033[0m\n");
+}
+
+void test_ft_strcat(void)
+{
+	char *str = strdup("cc");
+	char *str2 = strdup("");
+	char *str3 = strdup("cc");
+	char *str4 = strdup("");
+	int e = 0;
+	int len = -1;
+
+	str = strcat(str, str2);
+	str3 = ft_strcat(str3, str4);
+	if (strcmp(str3, str) != 0)
+		printf("\033[31merror on ft_strcat\n");
+	else
+		printf("\033[92m ft_strcat is ok \033[0m\n");
+}
+
+int	main(void){
+	// test_isalpha();
+	// test_toupper();
+	// test_tolower();
+	// test_isdigit();
+	// test_isascii();
+	// test_isalnum();
+	// test_isprint();
+	// test_memcpy();
+	// test_ft_bzero();
+	// test_ft_memset();
+	// test_ft_strlen();
+	// test_ft_strcat();
+    ft_puts("coucoutoi");
+    puts("coucoutoi");
+	return 0;
 }
