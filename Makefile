@@ -23,6 +23,8 @@ S_FILES =	ft_isdigit.s\
 			ft_puts.s\
 			ft_memset.s\
 			ft_memcpy.s\
+			ft_putendline.s\
+			ft_strdup.s\
 		  
 
 all: $(NAME)

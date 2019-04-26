@@ -1,7 +1,12 @@
+
 #include <stdio.h>
-#include <ctype.h>
-#include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <ctype.h>
+#include <unistd.h>
+#include <string.h>
 
 void ft_putstr(char *c);
 int ft_isalpha(char c);
@@ -22,6 +27,7 @@ void  ft_putchar(char c);
 void  ft_putchar_fd(char c, int fd);
 int ft_isupper(char c);
 int ft_islower(char c);
+
 
 
 void	test_isalpha()
@@ -237,5 +243,14 @@ int	main(void){
 	// test_ft_strcat();
     ft_puts("coucoutoi");
     puts("coucoutoi");
+	void *str;
+	if (!(str = ft_strdup("42432"))) {
+		printf("null");
+	} else {
+		printf("good\n");
+		printf("jai dup, %s\n", str);
+	}
+	
+	
 	return 0;
 }

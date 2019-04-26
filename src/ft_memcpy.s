@@ -8,7 +8,7 @@ _ft_memcpy:
     mov rcx, rdx
     cld
     mov rax, rdi
-    rep movsb
+    repnz movsb
 
 end:
     pop rax
