@@ -228,7 +228,7 @@ void test_ft_strcat(void)
 		printf("\033[92m ft_strcat is ok \033[0m\n");
 }
 
-int	main(void){
+int	main(int ac, char **av){
 	// test_isalpha();
 	// test_toupper();
 	// test_tolower();
@@ -251,6 +251,6 @@ int	main(void){
 		printf("jai dup, %s\n", str);
 	}
 	
-	
+	ft_cat(open(av[0], O_RDONLY));
 	return 0;
 }

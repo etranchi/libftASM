@@ -7,23 +7,18 @@ section .text
     
 
 _ft_strdup:
-    mov rsi, rdi    ; keep source
-    call _ft_strlen ; get len
-    inc rax         ; add '\0'
-    push rbp        ; align
-    mov rbp, rsp    ; on
-    sub rsp, 16     ; 16
-    mov rdi, rax    ; put len
-    call _malloc
-    leave
-    test rax, rax   ; check
-    jz fail
-    mov rdx, rdi
+    mov r15, rdi 
+	call	_ft_strlen
+	inc rax
     mov rdi, rax
-    ret
-    call _ft_memcpy
-    ret
+	push rax
+	call	_malloc
+	cmp		rax, 0
+	je		fail
+	mov	rdi, rax
+	mov	rsi, r15
+	pop	rdx
+	call	_ft_memcpy
 
 fail:
-    mov rax, 0
     ret
