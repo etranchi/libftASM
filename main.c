@@ -7,6 +7,7 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <string.h>
+#include <math.h>
 
 void ft_putstr(char *c);
 int ft_isalpha(char c);
@@ -22,11 +23,9 @@ int ft_strlen(char *s1);
 void *ft_memcpy(char *s1, char *s2, size_t n);
 char *ft_strdup(char *s1);
 void *ft_memset(void *b, int c, size_t len);
-int  ft_icmp(int a, int b);
-void  ft_putchar(char c);
-void  ft_putchar_fd(char c, int fd);
-int ft_isupper(char c);
-int ft_islower(char c);
+int ft_power2(int);
+int ft_powern(int, int);
+char *ft_strcpy(char *, char *);
 
 
 
@@ -213,12 +212,10 @@ void	test_ft_strlen(void)
 
 void test_ft_strcat(void)
 {
-	char *str = strdup("cc");
+	char *str = strdup("");
 	char *str2 = strdup("");
-	char *str3 = strdup("cc");
+	char *str3 = strdup("");
 	char *str4 = strdup("");
-	int e = 0;
-	int len = -1;
 
 	str = strcat(str, str2);
 	str3 = ft_strcat(str3, str4);
@@ -228,29 +225,79 @@ void test_ft_strcat(void)
 		printf("\033[92m ft_strcat is ok \033[0m\n");
 }
 
-int	main(int ac, char **av){
-	// test_isalpha();
-	// test_toupper();
-	// test_tolower();
-	// test_isdigit();
-	// test_isascii();
-	// test_isalnum();
-	// test_isprint();
-	// test_memcpy();
-	// test_ft_bzero();
-	// test_ft_memset();
-	// test_ft_strlen();
-	// test_ft_strcat();
-    ft_puts("coucoutoi");
-    puts("coucoutoi");
-	void *str;
-	if (!(str = ft_strdup("42432"))) {
-		printf("null");
-	} else {
-		printf("good\n");
-		printf("jai dup, %s\n", str);
+void test_ft_strdup(void)
+{
+	char *str = strdup("");
+	char *str2 = ft_strdup("");
+	char *str3 = strdup("salut toi !");
+	char *str4 = ft_strdup("salut toi !");
+
+
+	if (strcmp(str, str2) != 0  || strcmp(str3, str4))
+		printf("\033[31merror on ft_strdup\n");
+	else
+		printf("\033[92m ft_strdup is ok \033[0m\n");
+}
+
+
+
+void test_ft_power2(void)
+{
+	int i = -50;
+	while (++i < 100 ) {
+		if (ft_power2(i) != (i * i)) {
+			printf("\033[31merror on ft_power2 %d\n", i);
+			return ;
+		}
 	}
+	printf("\033[92m ft_power2 is ok \033[0m\n");
+}
+
+// void test_ft_powern() {
+// 	int i = 0;
+// 	while (++i < 100) 
+// 	{
+// 		if (ft_powern(2, i) != pow(2, i)) {
+// 			printf("\033[31merror on ft_powern %d ret pow : %f, myret: %d\n", i,pow(2, i), ft_powern(2, i));
+// 			return ;
+// 		}
+// 	}
+// 	printf("\033[92m ft_powern is ok \033[0m\n");
+// }
+
+
+void test_ft_strcpy() {
+	char *str = strdup("");
+	char *str2 = strdup("");
+	char *str3 = strdup("coucou toi !");
+	char *str4 = strdup("coucou toi !");
+	char *ret2;
+	char *ret1;
 	
-	ft_cat(open(av[0], O_RDONLY));
+	ret2 = strcpy(str, str3);
+	printf("%sa", str);
+	ret1 = ft_strcpy(str2, str4);
+	printf("%s", ret1);
+}
+
+int	main(int ac, char **av){
+	test_isalpha();
+	test_toupper();
+	test_tolower();
+	test_isdigit();
+	test_isascii();
+	test_isalnum();
+	test_isprint();
+	test_memcpy();
+	test_ft_bzero();
+	test_ft_memset();
+	test_ft_strlen();
+	test_ft_strcat();
+	test_ft_strdup();
+	test_ft_power2();
+	test_ft_strcpy();
+	ft_puts("coucou");
+
+	ft_cat(open(av[1], O_RDONLY));
 	return 0;
 }

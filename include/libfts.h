@@ -19,4 +19,7 @@ void    *ft_memcpy(void *, const void *, size_t);
 void    *ft_strdup(char *);
 void    ft_putendline(void);
 void    ft_cat(int);
+int     ft_power2(int);
+int     ft_powern(int, int);
+int     ft_strcmp(char *, char *);
 #endif 

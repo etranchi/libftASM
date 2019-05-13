@@ -26,7 +26,9 @@ S_FILES =	ft_isdigit.s\
 			ft_putendline.s\
 			ft_strdup.s\
 			ft_cat.s\
-		  
+			ft_power2.s\
+			ft_powern.s\
+		  	ft_strcpy.s\
 
 all: $(NAME)
 
