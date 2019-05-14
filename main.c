@@ -9,10 +9,12 @@
 #include <string.h>
 #include <math.h>
 
-void ft_putstr(char *c);
+void ft_puts(char *c);
 int ft_isalpha(char c);
 int ft_toupper(int c);
+int ft_isupper(int c);
 int ft_tolower(int c);
+int ft_islower(int c);
 int ft_isdigit(int c);
 int ft_isascii(int c);
 int ft_isalnum(int c);
@@ -20,12 +22,13 @@ int ft_isprint(int c);
 void ft_bzero(char *str, size_t n);
 char *ft_strcat(char *s1, char *s2);
 int ft_strlen(char *s1);
+void    ft_cat(int);
 void *ft_memcpy(char *s1, char *s2, size_t n);
 char *ft_strdup(char *s1);
 void *ft_memset(void *b, int c, size_t len);
 int ft_power2(int);
-int ft_powern(int, int);
 char *ft_strcpy(char *, char *);
+
 
 
 
@@ -253,31 +256,45 @@ void test_ft_power2(void)
 	printf("\033[92m ft_power2 is ok \033[0m\n");
 }
 
-// void test_ft_powern() {
-// 	int i = 0;
-// 	while (++i < 100) 
-// 	{
-// 		if (ft_powern(2, i) != pow(2, i)) {
-// 			printf("\033[31merror on ft_powern %d ret pow : %f, myret: %d\n", i,pow(2, i), ft_powern(2, i));
-// 			return ;
-// 		}
-// 	}
-// 	printf("\033[92m ft_powern is ok \033[0m\n");
-// }
-
-
 void test_ft_strcpy() {
 	char *str = strdup("");
 	char *str2 = strdup("");
 	char *str3 = strdup("coucou toi !");
 	char *str4 = strdup("coucou toi !");
+	
 	char *ret2;
 	char *ret1;
 	
 	ret2 = strcpy(str, str3);
-	printf("%sa", str);
 	ret1 = ft_strcpy(str2, str4);
-	printf("%s", ret1);
+	if (strcmp(ret2, ret1)) {
+		printf("\033[31merror on ft_strcpy \n");
+	} else {
+		printf("\033[92m ft_strcpy is ok \033[0m\n");
+	}
+}
+
+
+void test_ft_isupper() {
+	int i = -50;
+	while (++i < 256) {
+		if (ft_isupper(i) != isupper(i)) {
+			printf("\033[31merror on ft_isupper \n");
+			return ;
+		}
+	}
+	printf("\033[92m ft_isupper is ok \033[0m\n");
+}
+
+void test_ft_islower() {
+	int i = -50;
+	while (++i < 256) {
+		if (ft_islower(i) != islower(i)) {
+			printf("\033[31merror on ft_islower \n");
+			return ;
+		}
+	}
+	printf("\033[92m ft_islower is ok \033[0m\n");
 }
 
 int	main(int ac, char **av){
@@ -296,7 +313,10 @@ int	main(int ac, char **av){
 	test_ft_strdup();
 	test_ft_power2();
 	test_ft_strcpy();
-	ft_puts("coucou");
+	test_ft_isupper();
+	test_ft_islower();
+
+	ft_puts("salut toi");
 
 	ft_cat(open(av[1], O_RDONLY));
 	return 0;

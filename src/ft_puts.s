@@ -1,6 +1,9 @@
 %define MACH_SYSCALL(x) 0x2000000 | x
 %define STDOUT 1
 %define WRITE 4
+section	.data
+    null:
+	    db "(null)"
 
 section .text
     global _ft_puts
@@ -9,6 +12,8 @@ section .text
     extern _ft_putendline
 
 _ft_puts:
+    cmp rdi, 0
+    je _null
     call _ft_strlen
     mov rdx, rax ; keep len
     push rbp ; align
@@ -23,4 +28,11 @@ _ft_puts:
     call _ft_putendline
     ret
 
-
+_null:
+	lea		rsi, [rel null]
+	mov		rdx, 6
+	mov		rdi, STDOUT
+	mov		rax, MACH_SYSCALL(WRITE)
+	syscall
+    call _ft_putendline
+    ret

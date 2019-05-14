@@ -12,7 +12,9 @@ FLAGS = -Wall -Werror -Wextra
 
 S_FILES =	ft_isdigit.s\
 			ft_tolower.s\
+			ft_islower.s\
 			ft_toupper.s\
+			ft_isupper.s\
 			ft_isalpha.s\
 			ft_isalnum.s\
 			ft_isascii.s\
@@ -27,7 +29,6 @@ S_FILES =	ft_isdigit.s\
 			ft_strdup.s\
 			ft_cat.s\
 			ft_power2.s\
-			ft_powern.s\
 		  	ft_strcpy.s\
 
 all: $(NAME)
